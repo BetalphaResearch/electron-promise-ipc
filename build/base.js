@@ -86,9 +86,9 @@ var PromiseIpcBase = /** @class */ (function () {
                 event.sender.send(replyChannel, 'success', results);
             })["catch"](function (e) {
                 if (e && e.then) {
-                    e.then((v) => event.sender.send(replyChannel, 'failure', serialize_error_1.serializeError(e)));
+                    e.then((v) => event.sender.send(replyChannel, 'failure', v));
                 } else {
-                    event.sender.send(replyChannel, 'failure', serialize_error_1.serializeError(e));
+                    event.sender.send(replyChannel, 'failure', e);
                 }
             });
         };
